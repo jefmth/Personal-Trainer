@@ -4,9 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personal Trainer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     /* ====== RESET ====== */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -21,20 +26,33 @@
     header {
       background: white;
       color: #2d3a4a;
-      padding: 15px 80px;
+      padding: 15px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       flex-wrap: wrap;
+      gap: 15px;
     }
 
-    header h1 { font-size: 1.4em; }
+    .logo h1 {
+      font-size: clamp(1.1em, 4vw, 1.4em);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .logo i {
+      color: #3c4dff;
+      font-size: clamp(1em, 4vw, 1.2em);
+    }
 
     nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 25px;
+      gap: clamp(10px, 3vw, 25px);
+      justify-content: center;
     }
 
     nav a {
@@ -42,9 +60,13 @@
       text-decoration: none;
       font-weight: 500;
       transition: 0.3s;
+      font-size: clamp(0.9em, 3vw, 1em);
+      padding: 5px 0;
     }
 
-    nav a:hover { color: #5a6bff; }
+    nav a:hover { 
+      color: #5a6bff; 
+    }
 
     /* ====== HERO ====== */
     .hero {
@@ -54,34 +76,46 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 40px 20px;
+      padding: clamp(20px, 5vw, 40px) clamp(15px, 4vw, 20px);
     }
 
     .hero h2 {
-      font-size: 2.8em;
+      font-size: clamp(1.8em, 8vw, 2.8em);
       font-weight: bold;
-      margin-bottom: 15px;
+      margin-bottom: clamp(10px, 3vw, 15px);
+      line-height: 1.2;
     }
 
     .hero p {
-      font-size: 1.1em;
+      font-size: clamp(0.95em, 3.5vw, 1.1em);
       color: #e0e0e0;
-      margin-bottom: 40px;
+      margin-bottom: clamp(25px, 6vw, 40px);
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 300px;
     }
 
     .btn {
       background: white;
       color: #3c4dff;
-      padding: 15px 40px;
+      padding: clamp(12px, 4vw, 15px) clamp(20px, 6vw, 40px);
       border-radius: 50px;
-      font-size: 1em;
+      font-size: clamp(0.9em, 3.5vw, 1em);
       font-weight: 600;
       text-decoration: none;
       box-shadow: 0 6px 15px rgba(0,0,0,0.2);
       transition: 0.3s ease;
       border: none;
       cursor: pointer;
-      margin: 10px;
+      width: 100%;
+      text-align: center;
     }
 
     .btn:hover {
@@ -93,7 +127,7 @@
     .modal {
       display: none;
       position: fixed;
-      z-index: 10;
+      z-index: 1000;
       left: 0;
       top: 0;
       width: 100%;
@@ -101,14 +135,15 @@
       background: rgba(0, 0, 0, 0.6);
       justify-content: center;
       align-items: center;
+      padding: 15px;
     }
 
     .modal-content {
       background: #fff;
       color: #333;
-      padding: 30px 25px;
+      padding: clamp(20px, 5vw, 30px) clamp(15px, 4vw, 25px);
       border-radius: 12px;
-      width: 90%;
+      width: 100%;
       max-width: 400px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       text-align: center;
@@ -122,29 +157,31 @@
     }
 
     .modal-content h3 {
-      margin-bottom: 20px;
+      margin-bottom: clamp(15px, 4vw, 20px);
       color: #3c4dff;
+      font-size: clamp(1.2em, 5vw, 1.4em);
     }
 
     .modal-content input {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
+      padding: clamp(10px, 3vw, 12px);
+      margin-bottom: 12px;
       border: 1px solid #ccc;
       border-radius: 8px;
-      font-size: 1em;
+      font-size: clamp(0.9em, 3.5vw, 1em);
     }
 
     .modal-content button {
       background: #3c4dff;
       color: white;
       border: none;
-      padding: 12px;
+      padding: clamp(10px, 3vw, 12px);
       width: 100%;
       border-radius: 8px;
       font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
+      font-size: clamp(0.9em, 3.5vw, 1em);
     }
 
     .modal-content button:hover {
@@ -155,7 +192,7 @@
     .tooltip-container {
       position: relative;
       display: inline-block;
-      margin-top: 15px;
+      margin-top: 12px;
     }
 
     .tooltip-container a {
@@ -163,14 +200,17 @@
       text-decoration: none;
       font-weight: 500;
       cursor: pointer;
+      font-size: clamp(0.85em, 3vw, 0.9em);
     }
 
-    .tooltip-container a:hover { text-decoration: underline; }
+    .tooltip-container a:hover { 
+      text-decoration: underline; 
+    }
 
     .tooltip-text {
       visibility: hidden;
       opacity: 0;
-      width: 280px;
+      width: min(280px, 90vw);
       background-color: #333;
       color: #fff;
       text-align: center;
@@ -182,7 +222,7 @@
       left: 50%;
       transform: translateX(-50%);
       transition: opacity 0.3s ease;
-      font-size: 0.9em;
+      font-size: clamp(0.8em, 2.5vw, 0.9em);
       line-height: 1.3em;
     }
 
@@ -204,41 +244,86 @@
 
     .link-text {
       display: inline-block;
-      margin-top: 15px;
+      margin-top: 12px;
       color: #3c4dff;
       text-decoration: none;
       font-weight: 500;
+      font-size: clamp(0.85em, 3vw, 0.9em);
     }
 
-    .link-text:hover { text-decoration: underline; }
+    .link-text:hover { 
+      text-decoration: underline; 
+    }
 
     .close {
       position: absolute;
-      top: 15px;
-      right: 25px;
-      font-size: 1.8em;
+      top: 10px;
+      right: 15px;
+      font-size: clamp(1.5em, 6vw, 1.8em);
       color: #fff;
       cursor: pointer;
-      z-index: 11;
+      z-index: 1001;
     }
 
     /* ====== RESPONSIVIDADE ====== */
     @media (max-width: 768px) {
-      header { padding: 15px 25px; }
-      .hero h2 { font-size: 2em; }
-      .btn { width: 80%; }
+      header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 20px;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: space-around;
+      }
+
+      .btn-container {
+        max-width: 250px;
+      }
     }
 
     @media (max-width: 480px) {
-      .hero h2 { font-size: 1.7em; }
-      .tooltip-text { width: 240px; font-size: 0.8em; }
+      .hero h2 {
+        font-size: 1.6em;
+      }
+
+      .tooltip-text {
+        width: 240px;
+      }
+
+      nav {
+        gap: 8px;
+      }
+
+      nav a {
+        padding: 3px 8px;
+        background: rgba(60, 77, 255, 0.1);
+        border-radius: 5px;
+      }
+    }
+
+    @media (max-width: 320px) {
+      .hero h2 {
+        font-size: 1.4em;
+      }
+      
+      .hero p {
+        font-size: 0.9em;
+      }
+      
+      .modal-content {
+        padding: 15px 12px;
+      }
     }
   </style>
 </head>
 <body>
   <!-- ====== Navbar ====== -->
   <header>
-    <h1>Personal Trainer</h1>
+    <div class="logo">
+      <h1><i class="fas fa-dumbbell"></i> Personal Trainer</h1>
+    </div>
     <nav>
       <a href="#" id="btnInicio">Início</a>
       <a href="#" id="btnSobre">Sobre</a>
@@ -251,8 +336,10 @@
   <section class="hero">
     <h2>Transforme Sua Carreira de Personal Trainer</h2>
     <p>Gerencie seus alunos, treinos e finanças em uma única plataforma</p>
-    <button class="btn" id="btnAcessar">Acessar Área do Personal</button>
-    <button class="btn" id="btnAluno">Acessar Área do Aluno</button>
+    <div class="btn-container">
+      <button class="btn" id="btnAcessar">Acessar Área do Personal</button>
+      <button class="btn" id="btnAluno">Acessar Área do Aluno</button>
+    </div>
   </section>
 
   <!-- ====== Modal do Personal Trainer ====== -->
@@ -354,10 +441,10 @@
     });
 
     // ====== Link Novo Aluno ======
-document.getElementById("novoAluno").addEventListener("click", (e) => {
-  e.preventDefault();
-  window.location.href = "NovoAluno.html";
-});
+    document.getElementById("novoAluno").addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = "NovoAluno.html";
+    });
 
     // ====== Link Novo Personal (em espera) ======
     document.getElementById("cadastrarPersonal").addEventListener("click", (e) => {
