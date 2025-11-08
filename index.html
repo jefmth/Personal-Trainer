@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Trainer</title>
+  <style>
+    /* ====== RESET ====== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6a8dff, #7350d9);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ====== HEADER ====== */
+    header {
+      background: white;
+      color: #2d3a4a;
+      padding: 15px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+    }
+
+    header h1 { font-size: 1.4em; }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    nav a {
+      color: #2d3a4a;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover { color: #5a6bff; }
+
+    /* ====== HERO ====== */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero h2 {
+      font-size: 2.8em;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.1em;
+      color: #e0e0e0;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      background: white;
+      color: #3c4dff;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-size: 1em;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      transition: 0.3s ease;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    /* ====== MODAIS ====== */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #fff;
+      color: #333;
+      padding: 30px 25px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      text-align: center;
+      animation: fadeIn 0.3s ease;
+      position: relative;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-content h3 {
+      margin-bottom: 20px;
+      color: #3c4dff;
+    }
+
+    .modal-content input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    .modal-content button {
+      background: #3c4dff;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .modal-content button:hover {
+      background: #293cff;
+    }
+
+    /* ====== TOOLTIP ====== */
+    .tooltip-container {
+      position: relative;
+      display: inline-block;
+      margin-top: 15px;
+    }
+
+    .tooltip-container a {
+      color: #3c4dff;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .tooltip-container a:hover { text-decoration: underline; }
+
+    .tooltip-text {
+      visibility: hidden;
+      opacity: 0;
+      width: 280px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 8px;
+      padding: 10px;
+      position: absolute;
+      z-index: 1;
+      bottom: 130%;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: opacity 0.3s ease;
+      font-size: 0.9em;
+      line-height: 1.3em;
+    }
+
+    .tooltip-text::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #333 transparent transparent transparent;
+    }
+
+    .tooltip-container:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .link-text {
+      display: inline-block;
+      margin-top: 15px;
+      color: #3c4dff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .link-text:hover { text-decoration: underline; }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      font-size: 1.8em;
+      color: #fff;
+      cursor: pointer;
+      z-index: 11;
+    }
+
+    /* ====== RESPONSIVIDADE ====== */
+    @media (max-width: 768px) {
+      header { padding: 15px 25px; }
+      .hero h2 { font-size: 2em; }
+      .btn { width: 80%; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h2 { font-size: 1.7em; }
+      .tooltip-text { width: 240px; font-size: 0.8em; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ====== Navbar ====== -->
+  <header>
+    <h1>Personal Trainer</h1>
+    <nav>
+      <a href="#" id="btnInicio">Início</a>
+      <a href="#" id="btnSobre">Sobre</a>
+      <a href="#" id="btnContato">Contato</a>
+      <a href="#" id="btnAreaPersonal">Área do Personal</a>
+    </nav>
+  </header>
+
+  <!-- ====== Hero ====== -->
+  <section class="hero">
+    <h2>Transforme Sua Carreira de Personal Trainer</h2>
+    <p>Gerencie seus alunos, treinos e finanças em uma única plataforma</p>
+    <button class="btn" id="btnAcessar">Acessar Área do Personal</button>
+    <button class="btn" id="btnAluno">Acessar Área do Aluno</button>
+  </section>
+
+  <!-- ====== Modal do Personal Trainer ====== -->
+  <div class="modal" id="loginModalPersonal">
+    <div class="modal-content">
+      <h3>Login do Personal Trainer</h3>
+      <input type="email" id="emailPersonal" placeholder="E-mail" required>
+      <input type="password" id="senhaPersonal" placeholder="Senha" required>
+      <button id="loginBtnPersonal">Entrar</button>
+
+      <div class="tooltip-container">
+        <a href="#" id="cadastrarPersonal">Cadastrar Novo Personal</a>
+        <span class="tooltip-text">
+          Entre em contato com <strong>jefmth@gmail.com</strong><br>
+          ou via WhatsApp <strong>fone 41998937391</strong>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== Modal do Aluno ====== -->
+  <div class="modal" id="loginModalAluno">
+    <div class="modal-content">
+      <h3>Login do Aluno</h3>
+      <input type="email" id="emailAluno" placeholder="E-mail" required>
+      <input type="password" id="senhaAluno" placeholder="Senha" required>
+      <button id="loginBtnAluno">Entrar</button>
+      <a href="#" class="link-text" id="novoAluno">Novo Aluno</a>
+    </div>
+  </div>
+
+  <span class="close" id="closeModal">&times;</span>
+
+  <!-- ====== Firebase + Script ====== -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-analytics.js";
+
+    // Configuração Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyCBfVkEt9-KsYnNxQut8g8wC9Z5arqTBrw",
+      authDomain: "personal-trainer-app-a3c87.firebaseapp.com",
+      projectId: "personal-trainer-app-a3c87",
+      storageBucket: "personal-trainer-app-a3c87.firebasestorage.app",
+      messagingSenderId: "617665511475",
+      appId: "1:617665511475:web:4637183afd71f685a5e346",
+      measurementId: "G-XH189VW7N0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+
+    // ====== Controle dos Modais ======
+    const modalPersonal = document.getElementById("loginModalPersonal");
+    const modalAluno = document.getElementById("loginModalAluno");
+    const closeBtn = document.getElementById("closeModal");
+
+    document.getElementById("btnAcessar").onclick = () => modalPersonal.style.display = "flex";
+    document.getElementById("btnAreaPersonal").onclick = () => modalPersonal.style.display = "flex";
+    document.getElementById("btnAluno").onclick = () => modalAluno.style.display = "flex";
+
+    closeBtn.onclick = () => {
+      modalPersonal.style.display = "none";
+      modalAluno.style.display = "none";
+    };
+    window.onclick = (e) => {
+      if (e.target === modalPersonal) modalPersonal.style.display = "none";
+      if (e.target === modalAluno) modalAluno.style.display = "none";
+    };
+
+    // ====== Login Personal ======
+    document.getElementById("loginBtnPersonal").addEventListener("click", async () => {
+      const email = document.getElementById("emailPersonal").value;
+      const senha = document.getElementById("senhaPersonal").value;
+
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, senha);
+        console.log("✅ Personal logado:", userCredential.user);
+        window.location.href = "PainelPersonal.html";
+      } catch (error) {
+        alert("❌ Erro no login do personal: " + error.message);
+      }
+    });
+
+    // ====== Login Aluno ======
+    document.getElementById("loginBtnAluno").addEventListener("click", async () => {
+      const email = document.getElementById("emailAluno").value;
+      const senha = document.getElementById("senhaAluno").value;
+
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, senha);
+        console.log("✅ Aluno logado:", userCredential.user);
+        window.location.href = "PainelAluno.html";
+      } catch (error) {
+        alert("❌ Erro no login do aluno: " + error.message);
+      }
+    });
+
+    // ====== Link Novo Aluno ======
+document.getElementById("novoAluno").addEventListener("click", (e) => {
+  e.preventDefault();
+  window.location.href = "NovoAluno.html";
+});
+
+    // ====== Link Novo Personal (em espera) ======
+    document.getElementById("cadastrarPersonal").addEventListener("click", (e) => {
+      e.preventDefault();
+      console.log("🟡 Link 'Cadastrar Novo Personal' aguardando instruções...");
+    });
+  </script>
+</body>
+</html>
