@@ -3,15 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personal Trainer</title>
+  <title>PersoFit</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     /* ====== RESET ====== */
-    * { 
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box; 
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -22,7 +18,6 @@
       flex-direction: column;
     }
 
-    /* ====== HEADER ====== */
     header {
       background: white;
       color: #2d3a4a;
@@ -64,11 +59,8 @@
       padding: 5px 0;
     }
 
-    nav a:hover { 
-      color: #5a6bff; 
-    }
+    nav a:hover { color: #5a6bff; }
 
-    /* ====== HERO ====== */
     .hero {
       flex: 1;
       display: flex;
@@ -184,63 +176,7 @@
       font-size: clamp(0.9em, 3.5vw, 1em);
     }
 
-    .modal-content button:hover {
-      background: #293cff;
-    }
-
-    /* ====== TOOLTIP ====== */
-    .tooltip-container {
-      position: relative;
-      display: inline-block;
-      margin-top: 12px;
-    }
-
-    .tooltip-container a {
-      color: #3c4dff;
-      text-decoration: none;
-      font-weight: 500;
-      cursor: pointer;
-      font-size: clamp(0.85em, 3vw, 0.9em);
-    }
-
-    .tooltip-container a:hover { 
-      text-decoration: underline; 
-    }
-
-    .tooltip-text {
-      visibility: hidden;
-      opacity: 0;
-      width: min(280px, 90vw);
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      border-radius: 8px;
-      padding: 10px;
-      position: absolute;
-      z-index: 1;
-      bottom: 130%;
-      left: 50%;
-      transform: translateX(-50%);
-      transition: opacity 0.3s ease;
-      font-size: clamp(0.8em, 2.5vw, 0.9em);
-      line-height: 1.3em;
-    }
-
-    .tooltip-text::after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: #333 transparent transparent transparent;
-    }
-
-    .tooltip-container:hover .tooltip-text {
-      visibility: visible;
-      opacity: 1;
-    }
+    .modal-content button:hover { background: #293cff; }
 
     .link-text {
       display: inline-block;
@@ -251,9 +187,7 @@
       font-size: clamp(0.85em, 3vw, 0.9em);
     }
 
-    .link-text:hover { 
-      text-decoration: underline; 
-    }
+    .link-text:hover { text-decoration: underline; }
 
     .close {
       position: absolute;
@@ -265,56 +199,9 @@
       z-index: 1001;
     }
 
-    /* ====== RESPONSIVIDADE ====== */
     @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px 20px;
-      }
-
-      nav {
-        width: 100%;
-        justify-content: space-around;
-      }
-
-      .btn-container {
-        max-width: 250px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero h2 {
-        font-size: 1.6em;
-      }
-
-      .tooltip-text {
-        width: 240px;
-      }
-
-      nav {
-        gap: 8px;
-      }
-
-      nav a {
-        padding: 3px 8px;
-        background: rgba(60, 77, 255, 0.1);
-        border-radius: 5px;
-      }
-    }
-
-    @media (max-width: 320px) {
-      .hero h2 {
-        font-size: 1.4em;
-      }
-      
-      .hero p {
-        font-size: 0.9em;
-      }
-      
-      .modal-content {
-        padding: 15px 12px;
-      }
+      header { flex-direction: column; text-align: center; padding: 15px 20px; }
+      .btn-container { max-width: 250px; }
     }
   </style>
 </head>
@@ -322,11 +209,11 @@
   <!-- ====== Navbar ====== -->
   <header>
     <div class="logo">
-      <h1><i class="fas fa-dumbbell"></i> Personal Trainer</h1>
+      <h1><i class="fas fa-dumbbell"></i> PersoFit</h1>
     </div>
     <nav>
       <a href="#" id="btnInicio">Início</a>
-      <a href="#" id="btnSobre">Sobre</a>
+      <a href="Sobre.html" id="btnSobre">Sobre</a>
       <a href="#" id="btnContato">Contato</a>
       <a href="#" id="btnAreaPersonal">Área do Personal</a>
     </nav>
@@ -349,14 +236,7 @@
       <input type="email" id="emailPersonal" placeholder="E-mail" required>
       <input type="password" id="senhaPersonal" placeholder="Senha" required>
       <button id="loginBtnPersonal">Entrar</button>
-
-      <div class="tooltip-container">
-        <a href="#" id="cadastrarPersonal">Cadastrar Novo Personal</a>
-        <span class="tooltip-text">
-          Entre em contato com <strong>jefmth@gmail.com</strong><br>
-          ou via WhatsApp <strong>fone 41998937391</strong>
-        </span>
-      </div>
+      <a href="#" class="link-text" id="cadastrarPersonal">Cadastrar Novo Personal</a>
     </div>
   </div>
 
@@ -379,7 +259,6 @@
     import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-analytics.js";
 
-    // Configuração Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyCBfVkEt9-KsYnNxQut8g8wC9Z5arqTBrw",
       authDomain: "personal-trainer-app-a3c87.firebaseapp.com",
@@ -394,7 +273,6 @@
     const analytics = getAnalytics(app);
     const auth = getAuth(app);
 
-    // ====== Controle dos Modais ======
     const modalPersonal = document.getElementById("loginModalPersonal");
     const modalAluno = document.getElementById("loginModalAluno");
     const closeBtn = document.getElementById("closeModal");
@@ -416,10 +294,8 @@
     document.getElementById("loginBtnPersonal").addEventListener("click", async () => {
       const email = document.getElementById("emailPersonal").value;
       const senha = document.getElementById("senhaPersonal").value;
-
       try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, senha);
-        console.log("✅ Personal logado:", userCredential.user);
+        await signInWithEmailAndPassword(auth, email, senha);
         window.location.href = "PainelPersonal.html";
       } catch (error) {
         alert("❌ Erro no login do personal: " + error.message);
@@ -430,10 +306,8 @@
     document.getElementById("loginBtnAluno").addEventListener("click", async () => {
       const email = document.getElementById("emailAluno").value;
       const senha = document.getElementById("senhaAluno").value;
-
       try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, senha);
-        console.log("✅ Aluno logado:", userCredential.user);
+        await signInWithEmailAndPassword(auth, email, senha);
         window.location.href = "PainelAluno.html";
       } catch (error) {
         alert("❌ Erro no login do aluno: " + error.message);
@@ -446,10 +320,10 @@
       window.location.href = "NovoAluno.html";
     });
 
-    // ====== Link Novo Personal (em espera) ======
+    // ====== Link Novo Personal ======
     document.getElementById("cadastrarPersonal").addEventListener("click", (e) => {
       e.preventDefault();
-      console.log("🟡 Link 'Cadastrar Novo Personal' aguardando instruções...");
+      window.location.href = "NovoPersonal.html";
     });
   </script>
 </body>

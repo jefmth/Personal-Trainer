@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre - PersoFit</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #3c4dff;
+      --accent: #6a8dff;
+      --background: #f8f9ff;
+      --textDark: #333;
+      --textLight: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--textDark);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: var(--primary);
+      color: var(--textLight);
+      padding: 20px 15px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+
+    header h1 {
+      font-size: clamp(1.4em, 4vw, 1.8em);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    main {
+      flex: 1;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    section h2 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: clamp(1.3em, 4vw, 1.6em);
+    }
+
+    section p, ul {
+      font-size: clamp(0.95em, 3vw, 1.05em);
+    }
+
+    ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    .highlight {
+      background: var(--primary);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 600;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+
+    .highlight a {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .highlight a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: var(--accent);
+      color: var(--textLight);
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 0.9em;
+      box-shadow: 0 -3px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      main {
+        padding: 0 15px;
+      }
+      header h1 {
+        font-size: 1.4em;
+      }
+      section h2 {
+        font-size: 1.25em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><i class="fas fa-dumbbell"></i> Sobre o PersoFit</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>Quem Somos</h2>
+      <p>
+        O <strong>PersoFit</strong> é uma plataforma completa voltada para <strong>Personal Trainers</strong> e seus alunos.
+        Nosso objetivo é simplificar a gestão de treinos, alunos e finanças, oferecendo uma experiência fluida, moderna e acessível em qualquer dispositivo.
+      </p>
+    </section>
+
+    <section>
+      <h2>O que Oferecemos</h2>
+      <p>Com o <strong>PersoFit</strong>, você pode:</p>
+      <ul>
+        <li>Gerenciar alunos e treinos de forma simples e organizada;</li>
+        <li>Controlar sua agenda e próximas aulas;</li>
+        <li>Registrar medidas, progresso e planos de treino;</li>
+        <li>Manter seu controle financeiro e planos ativos;</li>
+        <li>Oferecer aos alunos acesso direto ao painel com login seguro.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Nosso Diferencial</h2>
+      <p>
+        O <strong>PersoFit</strong> se inspira em grandes aplicativos de gestão fitness,
+        mas foi criado com foco na praticidade e personalização que o profissional autônomo precisa.
+        Ele é totalmente <strong>responsivo</strong>, <strong>seguro</strong> e integrado ao <strong>Firebase</strong>,
+        garantindo desempenho e confiabilidade.
+      </p>
+    </section>
+
+    <section>
+      <h2>Aplicativo PersoFit</h2>
+      <p>Em breve, o aplicativo <strong>PersoFit</strong> estará disponível para Android e iOS.</p>
+      <div class="highlight">
+        <i class="fas fa-mobile-alt"></i> <a href="#">Baixar o aplicativo PersoFit (em breve)</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Contato</h2>
+      <p>Para dúvidas, suporte ou parcerias, entre em contato conosco:</p>
+      <p><strong>E-mail:</strong> jefmth@gmail.com</p>
+      <p><strong>WhatsApp:</strong> (41) 99893-7391</p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 PersoFit. Todos os direitos reservados.
+  </footer>
+</body>
+</html>

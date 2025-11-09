@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Novo Personal - Personal Trainer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #3c4dff;
+      --accent: #6a8dff;
+      --bg: #f8f9ff;
+      --error: #e74c3c;
+      --success: #2ecc71;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 500px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 35px 28px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 1.6em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #2c3fff;
+    }
+
+    .msg {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: 500;
+      font-size: 0.95em;
+    }
+
+    .success {
+      color: var(--success);
+    }
+
+    .error {
+      color: var(--error);
+    }
+
+    .contact {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 0.95em;
+      color: #444;
+    }
+
+    .contact strong {
+      color: var(--primary);
+    }
+
+    .voltar {
+      display: block;
+      text-align: center;
+      margin-top: 18px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .voltar:hover {
+      text-decoration: underline;
+    }
+
+    /* 📱 Responsividade */
+    @media (max-width: 768px) {
+      .card {
+        padding: 28px 22px;
+      }
+      h2 {
+        font-size: 1.4em;
+      }
+      button {
+        padding: 13px;
+        font-size: 1em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 15px;
+      }
+      .card {
+        padding: 22px 18px;
+      }
+      input {
+        font-size: 0.95em;
+        padding: 11px;
+      }
+      button {
+        font-size: 0.95em;
+        padding: 12px;
+      }
+      .contact {
+        font-size: 0.9em;
+      }
+    }
+
+    @media (max-width: 360px) {
+      h2 {
+        font-size: 1.2em;
+      }
+      input, button {
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h2><i class="fas fa-user-plus"></i> Cadastro de Novo Personal</h2>
+
+    <label for="nome">Nome (primeiro e segundo nome)</label>
+    <input id="nome" type="text" placeholder="Ex: João da Silva" required />
+
+    <label for="cpf">CPF</label>
+    <input id="cpf" type="text" placeholder="Somente números" required />
+
+    <label for="celular">Celular</label>
+    <input id="celular" type="tel" placeholder="(XX) XXXXX-XXXX" required />
+
+    <label for="email">E-mail</label>
+    <input id="email" type="email" placeholder="exemplo@dominio.com" required />
+
+    <label for="senha">Senha (6 dígitos)</label>
+    <input id="senha" type="password" maxlength="6" minlength="6" placeholder="******" required />
+
+    <label for="codigo">Código de Verificação</label>
+    <input id="codigo" type="text" maxlength="8" placeholder="Ex: 82736491" required />
+
+    <button id="btnCadastrar"><i class="fas fa-check-circle"></i> Cadastrar Personal</button>
+
+    <p class="msg" id="mensagem"></p>
+
+    <p class="contact">
+      Entre em contato para adquirir o código de verificação: <br>
+      <strong>jefmth@gmail.com</strong> ou WhatsApp <strong>(41) 99893-7391</strong>
+    </p>
+
+    <a href="index.html" class="voltar">← Voltar ao Login</a>
+  </main>
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+    import { getDatabase, ref, get, child, push, set, remove } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCBfVkEt9-KsYnNxQut8g8wC9Z5arqTBrw",
+      authDomain: "personal-trainer-app-a3c87.firebaseapp.com",
+      databaseURL: "https://personal-trainer-app-a3c87-default-rtdb.firebaseio.com",
+      projectId: "personal-trainer-app-a3c87",
+      storageBucket: "personal-trainer-app-a3c87.firebasestorage.app",
+      messagingSenderId: "617665511475",
+      appId: "1:617665511475:web:4637183afd71f685a5e346",
+      measurementId: "G-XH189VW7N0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+
+    const q = id => document.getElementById(id);
+    const msg = q("mensagem");
+
+    function showMsg(text, type) {
+      msg.textContent = text;
+      msg.className = "msg " + type;
+    }
+
+    q("btnCadastrar").addEventListener("click", async () => {
+      const nome = q("nome").value.trim();
+      const cpf = q("cpf").value.trim();
+      const celular = q("celular").value.trim();
+      const email = q("email").value.trim();
+      const senha = q("senha").value.trim();
+      const codigo = q("codigo").value.trim();
+
+      if (!nome || !cpf || !celular || !email || !senha || !codigo) {
+        showMsg("⚠️ Preencha todos os campos.", "error");
+        return;
+      }
+
+      if (nome.split(" ").length < 2) {
+        showMsg("⚠️ Informe o primeiro e o segundo nome.", "error");
+        return;
+      }
+
+      if (senha.length !== 6) {
+        showMsg("⚠️ A senha deve ter exatamente 6 dígitos.", "error");
+        return;
+      }
+
+      try {
+        const snapshot = await get(child(ref(db), "codigo"));
+        if (!snapshot.exists()) {
+          showMsg("⚠️ Nenhum código encontrado no banco.", "error");
+          return;
+        }
+
+        const codigos = snapshot.val();
+        let codigoKey = null;
+
+        for (const [key, value] of Object.entries(codigos)) {
+          if (String(value) === codigo) {
+            codigoKey = key;
+            break;
+          }
+        }
+
+        if (!codigoKey) {
+          showMsg("❌ Código de verificação inválido.", "error");
+          return;
+        }
+
+        await createUserWithEmailAndPassword(auth, email, senha);
+
+        const novoRef = push(ref(db, "personals"));
+        await set(novoRef, {
+          nome,
+          cpf,
+          celular,
+          email,
+          senha,
+          codigoVerificacao: codigo,
+          dataCadastro: new Date().toISOString()
+        });
+
+        await remove(ref(db, `codigo/${codigoKey}`));
+
+        showMsg("✅ Personal cadastrado com sucesso!", "success");
+        ["nome","cpf","celular","email","senha","codigo"].forEach(id => q(id).value = "");
+
+      } catch (error) {
+        console.error(error);
+        if (error.code === "auth/email-already-in-use") {
+          showMsg("⚠️ Este e-mail já está cadastrado.", "error");
+        } else if (error.code === "auth/invalid-email") {
+          showMsg("⚠️ E-mail inválido.", "error");
+        } else {
+          showMsg("❌ Erro ao cadastrar: " + error.message, "error");
+        }
+      }
+    });
+  </script>
+</body>
+</html>

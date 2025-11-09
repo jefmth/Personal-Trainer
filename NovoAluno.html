@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Novo Aluno - Personal Trainer</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
 
   <style>
     :root {
@@ -25,60 +28,25 @@
     body {
       background: linear-gradient(135deg, var(--cor-secundaria), var(--cor-principal));
       display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    .header {
-      background: white;
-      color: #2d3a4a;
-      padding: clamp(12px, 3vw, 15px) clamp(20px, 5vw, 40px);
-      display: flex;
       justify-content: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    .nav-container {
-      width: 100%;
-      max-width: 1200px;
-      display: flex;
-      justify-content: space-between;
       align-items: center;
-    }
-
-    .logo h1 {
-      font-size: clamp(1.1em, 4vw, 1.4em);
-      display: flex;
-      align-items: center;
-      gap: clamp(8px, 2vw, 10px);
-    }
-
-    .logo i {
-      color: #3c4dff;
+      min-height: 100vh;
+      padding: 20px;
     }
 
     .form-container {
       background: white;
-      padding: clamp(25px, 5vw, 40px) clamp(20px, 4vw, 30px);
+      padding: 40px 30px;
       border-radius: 15px;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-      width: min(95%, 500px);
-      margin: clamp(20px, 4vw, 40px) auto;
+      width: 100%;
+      max-width: 500px;
     }
 
     h2 {
       text-align: center;
-      margin-bottom: clamp(20px, 4vw, 25px);
+      margin-bottom: 25px;
       color: var(--cor-principal);
-      font-size: clamp(1.3em, 5vw, 1.6em);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .form-group {
-      margin-bottom: clamp(12px, 3vw, 15px);
     }
 
     label {
@@ -86,22 +54,21 @@
       margin-bottom: 5px;
       display: block;
       color: #333;
-      font-size: clamp(0.9em, 3vw, 1em);
     }
 
     input {
       width: 100%;
-      padding: clamp(10px, 3vw, 12px);
+      padding: 12px;
+      margin-bottom: 15px;
       border: 1px solid #ccc;
       border-radius: 8px;
-      font-size: clamp(0.9em, 3vw, 1em);
+      font-size: 1em;
       transition: 0.3s;
     }
 
     input:focus {
       border-color: var(--cor-principal);
       outline: none;
-      box-shadow: 0 0 0 2px rgba(60, 77, 255, 0.1);
     }
 
     button {
@@ -109,41 +76,30 @@
       background: var(--cor-principal);
       color: white;
       border: none;
-      padding: clamp(12px, 3vw, 15px);
+      padding: 15px;
       border-radius: 10px;
-      font-size: clamp(1em, 3.5vw, 1.1em);
+      font-size: 1.1em;
       font-weight: 600;
       cursor: pointer;
       transition: 0.3s;
-      margin-top: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
     }
 
     button:hover {
       background: #293cff;
-      transform: translateY(-2px);
     }
 
     .msg {
       text-align: center;
-      margin-top: 12px;
+      margin-top: 10px;
       font-weight: 500;
-      font-size: clamp(0.9em, 3vw, 1em);
-      padding: 8px;
-      border-radius: 5px;
     }
 
     .success {
       color: var(--cor-sucesso);
-      background: rgba(46, 204, 113, 0.1);
     }
 
     .error {
       color: var(--cor-erro);
-      background: rgba(231, 76, 60, 0.1);
     }
 
     .voltar {
@@ -153,146 +109,85 @@
       color: var(--cor-principal);
       text-decoration: none;
       font-weight: 600;
-      font-size: clamp(0.9em, 3vw, 1em);
-      padding: 8px;
     }
 
     .voltar:hover {
       text-decoration: underline;
     }
 
-    /* Responsividade */
     @media (max-width: 768px) {
       .form-container {
-        padding: 20px;
-        margin: 20px auto;
+        padding: 30px 20px;
       }
 
-      .nav-container {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
+      h2 {
+        font-size: 1.4em;
+      }
+
+      input,
+      button {
+        font-size: 0.95em;
       }
     }
 
     @media (max-width: 480px) {
       .form-container {
-        padding: 15px;
-        margin: 15px auto;
-      }
-
-      h2 {
-        font-size: 1.3em;
+        padding: 25px 15px;
       }
 
       button {
         padding: 12px;
-        font-size: 1em;
-      }
-
-      .header {
-        padding: 10px 15px;
-      }
-    }
-
-    @media (max-width: 320px) {
-      .form-container {
-        padding: 12px;
-      }
-
-      h2 {
-        font-size: 1.2em;
-      }
-
-      input {
-        padding: 8px;
-      }
-
-      button {
-        padding: 10px;
-        font-size: 0.95em;
-      }
-
-      .logo h1 {
-        font-size: 1em;
+        font-size: 0.9em;
       }
     }
   </style>
 </head>
 <body>
-  <header class="header">
-    <nav class="nav-container">
-      <div class="logo">
-        <h1><i class="fas fa-dumbbell"></i> Personal Trainer</h1>
-      </div>
-    </nav>
-  </header>
-
   <div class="form-container">
     <h2><i class="fas fa-user-plus"></i> Cadastro de Novo Aluno</h2>
 
-    <div class="form-group">
-      <label for="personal">Nome do Personal</label>
-      <input type="text" id="personal" placeholder="Nome do Personal" required />
-    </div>
+    <label for="personal">Nome do Personal</label>
+    <input type="text" id="personal" placeholder="Ex: João Silva" required />
 
-    <div class="form-group">
-      <label for="nome">Nome do Aluno</label>
-      <input type="text" id="nome" placeholder="Nome completo" required />
-    </div>
+    <label for="nome">Nome do Aluno</label>
+    <input type="text" id="nome" placeholder="Nome completo" required />
 
-    <div class="form-group">
-      <label for="cpf">CPF</label>
-      <input type="text" id="cpf" placeholder="Somente números" required />
-    </div>
+    <label for="cpf">CPF</label>
+    <input type="text" id="cpf" placeholder="Somente números" required />
 
-    <div class="form-group">
-      <label for="celular">Celular</label>
-      <input type="text" id="celular" placeholder="(XX) XXXXX-XXXX" required />
-    </div>
+    <label for="celular">Celular</label>
+    <input type="text" id="celular" placeholder="(XX) XXXXX-XXXX" required />
 
-    <div class="form-group">
-      <label for="email">E-mail</label>
-      <input type="email" id="email" placeholder="exemplo@email.com" required />
-    </div>
+    <label for="email">E-mail</label>
+    <input type="email" id="email" placeholder="exemplo@email.com" required />
 
-    <div class="form-group">
-      <label for="senha">Senha (6 dígitos)</label>
-      <input
-        type="password"
-        id="senha"
-        placeholder="******"
-        minlength="6"
-        maxlength="6"
-        required
-      />
-    </div>
+    <label for="senha">Senha (6 dígitos)</label>
+    <input
+      type="password"
+      id="senha"
+      placeholder="******"
+      minlength="6"
+      maxlength="6"
+      required
+    />
 
-    <div class="form-group">
-      <label for="idade">Idade</label>
-      <input type="number" id="idade" placeholder="Idade" required />
-    </div>
+    <label for="idade">Idade</label>
+    <input type="number" id="idade" placeholder="Idade" required />
 
-    <div class="form-group">
-      <label for="altura">Altura (m)</label>
-      <input type="number" id="altura" step="0.01" placeholder="Ex: 1.75" required />
-    </div>
+    <label for="altura">Altura (m)</label>
+    <input type="text" id="altura" placeholder="Ex: 1,75" required />
 
-    <div class="form-group">
-      <label for="peso">Peso (kg)</label>
-      <input type="number" id="peso" step="0.1" placeholder="Ex: 70.5" required />
-    </div>
+    <label for="peso">Peso (kg)</label>
+    <input type="text" id="peso" placeholder="Ex: 70,5" required />
 
-    <div class="form-group">
-      <label for="codigo">Código de Verificação</label>
-      <input
-        type="text"
-        id="codigo"
-        maxlength="8"
-        placeholder="Ex: 82736491"
-        required
-      />
-    </div>
+    <label for="codigo">Código de Verificação</label>
+    <input
+      type="text"
+      id="codigo"
+      maxlength="8"
+      placeholder="Ex: 82736491"
+      required
+    />
 
     <button id="btnCadastrar">
       <i class="fas fa-check-circle"></i> Cadastrar Aluno
@@ -308,7 +203,6 @@
     import { getDatabase, ref, get, child, push, set, remove } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js";
     import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
 
-    // Configuração Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyCBfVkEt9-KsYnNxQut8g8wC9Z5arqTBrw",
       authDomain: "personal-trainer-app-a3c87.firebaseapp.com",
@@ -332,25 +226,38 @@
       const email = document.getElementById("email").value.trim();
       const senha = document.getElementById("senha").value.trim();
       const idade = document.getElementById("idade").value.trim();
-      const altura = document.getElementById("altura").value.trim();
-      const peso = document.getElementById("peso").value.trim();
+      let altura = document.getElementById("altura").value.trim();
+      let peso = document.getElementById("peso").value.trim();
       const codigo = document.getElementById("codigo").value.trim();
       const msg = document.getElementById("mensagem");
 
       msg.textContent = "";
       msg.className = "msg";
 
+      // Validações
       if (!personal || !nome || !cpf || !celular || !email || !senha || !idade || !altura || !peso || !codigo) {
         msg.textContent = "⚠️ Preencha todos os campos.";
         msg.className = "msg error";
         return;
       }
 
+      // Personal deve ter pelo menos dois nomes
+      if (personal.split(" ").length < 2) {
+        msg.textContent = "⚠️ Informe o primeiro e o segundo nome do personal.";
+        msg.className = "msg error";
+        return;
+      }
+
+      // Senha de 6 dígitos obrigatória
       if (senha.length !== 6) {
         msg.textContent = "⚠️ A senha deve ter exatamente 6 dígitos.";
         msg.className = "msg error";
         return;
       }
+
+      // Converte vírgula para ponto (Firebase espera ponto como decimal)
+      altura = altura.replace(",", ".");
+      peso = peso.replace(",", ".");
 
       try {
         const dbRef = ref(db);
@@ -378,10 +285,10 @@
           return;
         }
 
-        // Cria o usuário no Authentication
+        // Cria usuário no Authentication
         await createUserWithEmailAndPassword(auth, email, senha);
 
-        // Salva os dados do aluno no Realtime Database
+        // Cadastra aluno no Realtime Database
         const novoAlunoRef = push(ref(db, "alunos"));
         await set(novoAlunoRef, {
           personal,
@@ -397,7 +304,7 @@
           dataCadastro: new Date().toISOString(),
         });
 
-        // Remove o código usado
+        // Remove código usado
         await remove(ref(db, `codigo/${codigoKey}`));
 
         msg.textContent = "✅ Aluno cadastrado com sucesso!";
@@ -409,8 +316,6 @@
           msg.textContent = "⚠️ Este e-mail já está cadastrado.";
         } else if (error.code === "auth/invalid-email") {
           msg.textContent = "⚠️ E-mail inválido.";
-        } else if (error.code === "auth/weak-password") {
-          msg.textContent = "⚠️ A senha precisa ter pelo menos 6 caracteres.";
         } else {
           msg.textContent = "❌ Erro ao cadastrar: " + error.message;
         }
