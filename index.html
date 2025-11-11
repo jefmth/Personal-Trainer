@@ -6,7 +6,6 @@
   <title>PersoFit</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* ====== RESET ====== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
@@ -115,7 +114,6 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.25);
     }
 
-    /* ====== MODAIS ====== */
     .modal {
       display: none;
       position: fixed;
@@ -212,11 +210,10 @@
       <h1><i class="fas fa-dumbbell"></i> PersoFit</h1>
     </div>
     <nav>
-      <!-- <a href="#" id="btnInicio">Início</a> -->
-	  <a href="Planos.html" id="btnInicio">Planos</a>
+      <a href="Planos.html" id="btnPlanos">Planos</a>
       <a href="Sobre.html" id="btnSobre">Sobre</a>
-      <a href="#" id="btnContato">Contato</a>
-      <a href="#" id="btnAreaPersonal">Área do Personal</a>
+      <a href="Contato.html" id="btnContato">Contato</a>
+      <a href="EscolhaPersonal.html" id="btnAreaPersonal">Escolha seu Personal</a>
     </nav>
   </header>
 
@@ -230,7 +227,7 @@
     </div>
   </section>
 
-  <!-- ====== Modal do Personal Trainer ====== -->
+  <!-- ====== Modais de Login ====== -->
   <div class="modal" id="loginModalPersonal">
     <div class="modal-content">
       <h3>Login do Personal Trainer</h3>
@@ -241,7 +238,6 @@
     </div>
   </div>
 
-  <!-- ====== Modal do Aluno ====== -->
   <div class="modal" id="loginModalAluno">
     <div class="modal-content">
       <h3>Login do Aluno</h3>
@@ -254,7 +250,6 @@
 
   <span class="close" id="closeModal">&times;</span>
 
-  <!-- ====== Firebase + Script ====== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
     import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
@@ -279,7 +274,6 @@
     const closeBtn = document.getElementById("closeModal");
 
     document.getElementById("btnAcessar").onclick = () => modalPersonal.style.display = "flex";
-    document.getElementById("btnAreaPersonal").onclick = () => modalPersonal.style.display = "flex";
     document.getElementById("btnAluno").onclick = () => modalAluno.style.display = "flex";
 
     closeBtn.onclick = () => {
@@ -291,7 +285,7 @@
       if (e.target === modalAluno) modalAluno.style.display = "none";
     };
 
-    // ====== Login Personal ======
+    // Login Personal
     document.getElementById("loginBtnPersonal").addEventListener("click", async () => {
       const email = document.getElementById("emailPersonal").value;
       const senha = document.getElementById("senhaPersonal").value;
@@ -303,7 +297,7 @@
       }
     });
 
-    // ====== Login Aluno ======
+    // Login Aluno
     document.getElementById("loginBtnAluno").addEventListener("click", async () => {
       const email = document.getElementById("emailAluno").value;
       const senha = document.getElementById("senhaAluno").value;
@@ -315,17 +309,16 @@
       }
     });
 
-    // ====== Link Novo Aluno ======
-    document.getElementById("novoAluno").addEventListener("click", (e) => {
+    // Links extras
+    document.getElementById("novoAluno").onclick = (e) => {
       e.preventDefault();
       window.location.href = "NovoAluno.html";
-    });
+    };
 
-    // ====== Link Novo Personal ======
-    document.getElementById("cadastrarPersonal").addEventListener("click", (e) => {
+    document.getElementById("cadastrarPersonal").onclick = (e) => {
       e.preventDefault();
       window.location.href = "NovoPersonal.html";
-    });
+    };
   </script>
 </body>
 </html>
