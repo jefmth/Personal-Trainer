@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escolha seu Personal - PersoFit</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #3c4dff;
+      --accent: #6a8dff;
+      --bg-light: #f8f9ff;
+      --text-dark: #333;
+      --text-light: #fff;
+      --shadow: rgba(0, 0, 0, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: var(--bg-light);
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ===== NAVBAR ===== */
+    header {
+      background: white;
+      color: #2d3a4a;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo h1 {
+      font-size: clamp(1.1em, 4vw, 1.4em);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .logo i {
+      color: #3c4dff;
+      font-size: clamp(1em, 4vw, 1.2em);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(10px, 3vw, 25px);
+      justify-content: center;
+    }
+
+    nav a {
+      color: #2d3a4a;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      font-size: clamp(0.9em, 3vw, 1em);
+      padding: 5px 0;
+    }
+
+    nav a:hover { color: #5a6bff; }
+
+    /* ===== CONTEÚDO ===== */
+    main {
+      flex: 1;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 30px;
+      font-size: clamp(1.4em, 4vw, 1.8em);
+      text-align: center;
+    }
+
+    .personals {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .personal-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px var(--shadow);
+      padding: 15px;
+      text-align: center;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .personal-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px var(--shadow);
+    }
+
+    .personal-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
+    .personal-card h3 {
+      font-size: 1.2em;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .personal-card p {
+      font-size: 0.95em;
+      color: #555;
+      margin-bottom: 12px;
+    }
+
+    footer {
+      background: var(--accent);
+      color: var(--text-light);
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+      margin-top: 30px;
+      box-shadow: 0 -2px 8px var(--shadow);
+    }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; text-align: center; padding: 15px 20px; }
+      .personal-card img { height: 200px; }
+    }
+
+    @media (max-width: 480px) {
+      .personal-card img { height: 180px; }
+      h2 { font-size: 1.3em; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <header>
+    <div class="logo">
+      <h1><i class="fas fa-dumbbell"></i> PersoFit</h1>
+    </div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="Sobre.html">Sobre</a>
+      <a href="Planos.html">Planos</a>
+      <a href="EscolhaPersonal.html" style="color:#5a6bff; font-weight:600;">Personais</a>
+      <a href="#" id="btnContato">Contato</a>
+    </nav>
+  </header>
+
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main>
+    <h2>Escolha seu Personal Trainer</h2>
+
+    <div class="personals">
+      <!-- Personal 1 -->
+      <div class="personal-card" onclick="window.location.href='#';">
+        <img src="https://images.unsplash.com/photo-1598970434795-0c54fe7c0648?auto=format&fit=crop&w=800&q=80" alt="Personal João Silva">
+        <h3>João Silva</h3>
+        <p>Especialista em musculação e condicionamento físico.</p>
+      </div>
+
+      <!-- Personal 2 -->
+      <div class="personal-card" onclick="window.location.href='#';">
+        <img src="https://images.unsplash.com/photo-1579758629934-09563a4d27ab?auto=format&fit=crop&w=800&q=80" alt="Personal Ana Souza">
+        <h3>Ana Souza</h3>
+        <p>Focada em treinos funcionais e emagrecimento saudável.</p>
+      </div>
+
+      <!-- Personal 3 -->
+      <div class="personal-card" onclick="window.location.href='#';">
+        <img src="https://images.unsplash.com/photo-1584467735815-f778f274e7f0?auto=format&fit=crop&w=800&q=80" alt="Personal Marcos Lima">
+        <h3>Marcos Lima</h3>
+        <p>Personal voltado para performance esportiva e alta intensidade.</p>
+      </div>
+
+      <!-- Personal 4 -->
+      <div class="personal-card" onclick="window.location.href='#';">
+        <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=800&q=80" alt="Personal Julia Mendes">
+        <h3>Julia Mendes</h3>
+        <p>Atuação em reabilitação física e qualidade de vida.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer>
+    &copy; 2025 PersoFit. Todos os direitos reservados.
+  </footer>
+</body>
+</html>
