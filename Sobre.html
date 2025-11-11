@@ -12,6 +12,7 @@
       --background: #f8f9ff;
       --textDark: #333;
       --textLight: #fff;
+      --shadow: rgba(0, 0, 0, 0.15);
     }
 
     * {
@@ -30,26 +31,55 @@
       min-height: 100vh;
     }
 
+    /* ===== NAVBAR ===== */
     header {
-      background: var(--primary);
-      color: var(--textLight);
-      padding: 20px 15px;
-      text-align: center;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+      background: white;
+      color: #2d3a4a;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
-    header h1 {
-      font-size: clamp(1.4em, 4vw, 1.8em);
+    .logo h1 {
+      font-size: clamp(1.1em, 4vw, 1.4em);
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 12px;
+      gap: 8px;
+      white-space: nowrap;
     }
 
+    .logo i {
+      color: #3c4dff;
+      font-size: clamp(1em, 4vw, 1.2em);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(10px, 3vw, 25px);
+      justify-content: center;
+    }
+
+    nav a {
+      color: #2d3a4a;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      font-size: clamp(0.9em, 3vw, 1em);
+      padding: 5px 0;
+    }
+
+    nav a:hover { color: #5a6bff; }
+
+    /* ===== CONTEÚDO ===== */
     main {
       flex: 1;
       max-width: 900px;
-      margin: 30px auto;
+      margin: 40px auto;
       padding: 0 20px;
     }
 
@@ -83,7 +113,7 @@
       border-radius: 10px;
       text-align: center;
       font-weight: 600;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 3px 10px var(--shadow);
     }
 
     .highlight a {
@@ -105,31 +135,34 @@
       box-shadow: 0 -3px 8px rgba(0,0,0,0.1);
     }
 
-    /* Responsividade */
-    @media (max-width: 600px) {
-      main {
-        padding: 0 15px;
-      }
-      header h1 {
-        font-size: 1.4em;
-      }
-      section h2 {
-        font-size: 1.25em;
-      }
+    @media (max-width: 768px) {
+      header { flex-direction: column; text-align: center; padding: 15px 20px; }
+      main { padding: 0 15px; }
     }
   </style>
 </head>
 <body>
+  <!-- ===== NAVBAR ===== -->
   <header>
-    <h1><i class="fas fa-dumbbell"></i> Sobre o PersoFit</h1>
+    <div class="logo">
+      <h1><i class="fas fa-dumbbell"></i> PersoFit</h1>
+    </div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="Sobre.html" style="color:#5a6bff; font-weight:600;">Sobre</a>
+      <a href="Planos.html">Planos</a>
+      <a href="#" id="btnContato">Contato</a>
+    </nav>
   </header>
 
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
   <main>
     <section>
       <h2>Quem Somos</h2>
       <p>
         O <strong>PersoFit</strong> é uma plataforma completa voltada para <strong>Personal Trainers</strong> e seus alunos.
-        Nosso objetivo é simplificar a gestão de treinos, alunos e finanças, oferecendo uma experiência fluida, moderna e acessível em qualquer dispositivo.
+        Nosso objetivo é simplificar a gestão de treinos, alunos e finanças, oferecendo uma experiência moderna e acessível
+        em qualquer dispositivo.
       </p>
     </section>
 
@@ -140,7 +173,7 @@
         <li>Gerenciar alunos e treinos de forma simples e organizada;</li>
         <li>Controlar sua agenda e próximas aulas;</li>
         <li>Registrar medidas, progresso e planos de treino;</li>
-        <li>Manter seu controle financeiro e planos ativos;</li>
+        <li>Manter controle financeiro e planos ativos;</li>
         <li>Oferecer aos alunos acesso direto ao painel com login seguro.</li>
       </ul>
     </section>
@@ -171,6 +204,7 @@
     </section>
   </main>
 
+  <!-- ===== RODAPÉ ===== -->
   <footer>
     &copy; 2025 PersoFit. Todos os direitos reservados.
   </footer>
